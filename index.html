@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gas Sensor & Bionic Olfaction Daily</title>
+    <style>
+:root {
+    --primary: #1a365d;
+    --primary-light: #2a4a7f;
+    --accent: #c53030;
+    --bg: #f7f8fa;
+    --card-bg: #ffffff;
+    --text: #1a202c;
+    --text-secondary: #4a5568;
+    --border: #e2e8f0;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-lg: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: 40px 0 30px;
+    border-bottom: 4px solid var(--accent);
+}
+
+header h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+header .subtitle {
+    font-size: 1.05em;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+header .meta {
+    margin-top: 12px;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
+
+/* Navigation */
+nav {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: var(--shadow);
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+nav a:hover, nav a.active {
+    background: var(--primary);
+    color: white;
+}
+
+/* Stats bar */
+.stats-bar {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    background: white;
+    font-size: 0.9em;
+}
+
+.stats-bar .stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.stats-bar .stat-num {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2em;
+}
+
+/* Main content */
+main {
+    padding: 30px 0;
+}
+
+/* Date section */
+.date-section {
+    margin-bottom: 36px;
+}
+
+.date-header {
+    font-size: 1.3em;
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 8px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.date-header .day-count {
+    font-size: 0.7em;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-left: 8px;
+}
+
+/* Paper card */
+.paper-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.15s;
+    position: relative;
+}
+
+.paper-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+.paper-card .score-badge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--primary);
+    color: white;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+}
+
+.paper-card .score-badge.high {
+    background: var(--accent);
+}
+
+.paper-title {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+    padding-right: 60px;
+}
+
+.paper-title a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.paper-title a:hover {
+    text-decoration: underline;
+    color: var(--accent);
+}
+
+.paper-meta {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.paper-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.paper-abstract {
+    font-size: 0.92em;
+    color: var(--text);
+    line-height: 1.65;
+    text-align: justify;
+}
+
+.paper-abstract.collapsed {
+    max-height: 4.5em;
+    overflow: hidden;
+    position: relative;
+}
+
+.paper-abstract.collapsed::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2em;
+    background: linear-gradient(transparent, white);
+}
+
+.paper-tags {
+    margin-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tag {
+    font-size: 0.75em;
+    background: #edf2f7;
+    color: var(--primary);
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.paper-links {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+}
+
+.paper-links a {
+    font-size: 0.82em;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 4px 12px;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.paper-links a:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Sidebar date list */
+.sidebar {
+    margin-top: 20px;
+}
+
+.sidebar h3 {
+    font-size: 1em;
+    color: var(--primary);
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+}
+
+.date-list {
+    list-style: none;
+}
+
+.date-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.date-list li a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.9em;
+    display: flex;
+    justify-content: space-between;
+}
+
+.date-list li a:hover {
+    color: var(--accent);
+}
+
+.date-list li .count {
+    color: var(--text-secondary);
+    font-size: 0.85em;
+}
+
+/* Footer */
+footer {
+    background: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 24px 0;
+    margin-top: 40px;
+    font-size: 0.85em;
+}
+
+footer a {
+    color: #bee3f8;
+}
+
+/* Two column layout for index */
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .two-col {
+        grid-template-columns: 1fr;
+    }
+    header h1 {
+        font-size: 1.4em;
+    }
+    .paper-card {
+        padding: 14px 16px;
+    }
+    .paper-title {
+        font-size: 1em;
+        padding-right: 0;
+    }
+    .paper-card .score-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+    .stats-bar {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+}
+
+/* Empty state */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-secondary);
+}
+
+.empty-state h2 {
+    font-size: 1.2em;
+    margin-bottom: 8px;
+    color: var(--text);
+}
+</style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Gas Sensor & Bionic Olfaction Daily</h1>
+            <div class="subtitle">气体传感器与仿生嗅觉每日学术进展</div>
+            <div class="meta">Auto-updated daily • Powered by arXiv API</div>
+        </div>
+    </header>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="active">Latest</a>
+            <a href="archive/2026-05-12.html" class="">2026-05-12</a>
+        </div>
+    </nav>
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stat">
+                <span class="stat-num">2</span> papers tracked
+            </div>
+            <div class="stat">
+                <span class="stat-num">1</span> days archived
+            </div>
+            <div class="stat">
+                <span class="stat-num">1</span> today
+            </div>
+        </div>
+    </div>
+    <main>
+        <div class="container two-col">
+            <div>
+                
+        <div class="date-section">
+            <h2 class="date-header">2026-05-12 <span class="day-count">(1 papers)</span></h2>
+            
+    <div class="paper-card">
+        <span class="score-badge high">Score: 7.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2605.11802" target="_blank">Systematic Investigation and Suppression of Fluorescence in High-Sensitivity Cavity-Enhanced Raman Gas Sensing</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Severin Hager-Roiser, Robert Zimmerleiter, Paul Gattinger, Ivan Zorin, Johannes D. Pedarnig, Markus Brandstetter</span>
+            <span>📅 2026-05-12</span>
+        </div>
+        <div class="paper-abstract collapsed">Raman spectroscopy enables broadband, multi-species gas analysis by providing access to an entire vibrational spectrum in a single measurement. However, the sensitivity of gas-phase Raman sensing is often limited by weak signals and fluorescence background from various optical elements that constrain the achievable signal-to-noise ratio (SNR) through signal-dependent noise contributions (e.g. shot noise). Here, we present a cavity-enhanced Raman spectroscopy (CERS) gas sensor employing a 500 mW, 532 nm continuous wave (CW) laser and a simple, non-resonant two-mirror multi-pass cavity (MPC) operated at ambient pressure and near the concentric condition, providing up to 45 internal reflections. To quantitatively capture the impact of fluorescence on performance, a CCD-specific noise model was developed that links fluorescenceinduced baseline levels to measurement noise. Complementary optical simulations were employed to assess the signal collection efficiency in the MPC. Through a systematic analysis of fluorescence sources, the background was reduced substantially by step-wise elimination of fluorescent optics. The fluorescence-minimized setup resolves weak Raman signatures in ambient-air spectra, including CO2 peaks, O2 and N2 overtones, and ambient CH4 (2 ppm). Calibration measurements for O2 (diluted in N2), N2 (in O2) and H2 (in N2) demonstrate detection limits of 11 ppm, 5 ppm and 3 ppm, respectively, with a 180 s measurement time. The results highlight fluorescence mitigation as a key design lever for robust, field-oriented CERS instrumentation for trace gas sensing.</div>
+        <div class="paper-tags"><span class="tag">physics.optics</span><span class="tag">physics.ins-det</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.11802" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2605.11802v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+        </div>
+        
+            </div>
+            <aside class="sidebar">
+                <h3>📅 Archive</h3>
+                <ul class="date-list">
+                    <li><a href="archive/2026-05-12.html">2026-05-12 <span class="count">papers</span></a></li>
+                </ul>
+            </aside>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p>Gas Sensor & Bionic Olfaction Research Tracker</p>
+            <p>Last updated: 2026-05-13 14:19</p>
+        </div>
+    </footer>
+</body>
+</html>
