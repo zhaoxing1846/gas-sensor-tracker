@@ -121,27 +121,6 @@ main {
     padding: 30px 0;
 }
 
-/* Date section */
-.date-section {
-    margin-bottom: 36px;
-}
-
-.date-header {
-    font-size: 1.3em;
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.date-header .day-count {
-    font-size: 0.7em;
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-left: 8px;
-}
-
 /* Paper card */
 .paper-card {
     background: var(--card-bg);
@@ -330,6 +309,74 @@ footer a {
     gap: 30px;
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 32px 0 16px;
+    flex-wrap: wrap;
+}
+
+.pagination a, .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: var(--primary);
+    background: white;
+    transition: all 0.2s;
+}
+
+.pagination a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination span.current {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: 700;
+}
+
+.pagination span.ellipsis {
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    min-width: 24px;
+}
+
+.pagination .page-info {
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 0.85em;
+    min-width: auto;
+}
+
+/* Date separator between pages */
+.page-date-sep {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 20px 0 8px;
+    padding: 6px 0;
+    border-top: 1px dashed var(--border);
+}
+
+.page-date-sep strong {
+    color: var(--primary);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .two-col {
@@ -379,7 +426,7 @@ footer a {
     </header>
     <nav>
         <div class="container">
-            <a href="../index.html">← Back to Latest</a>
+            <a href="../index.html">← Back to All Papers</a>
             <a href="2026-05-02.html" class="active">2026-05-02</a>
         </div>
     </nav>
@@ -411,7 +458,7 @@ footer a {
     <footer>
         <div class="container">
             <p>Gas Sensor & Bionic Olfaction Research Tracker</p>
-            <p>Generated: 2026-05-14 19:24</p>
+            <p>Generated: 2026-05-14 19:30</p>
         </div>
     </footer>
 </body>

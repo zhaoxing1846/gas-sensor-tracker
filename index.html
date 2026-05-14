@@ -121,27 +121,6 @@ main {
     padding: 30px 0;
 }
 
-/* Date section */
-.date-section {
-    margin-bottom: 36px;
-}
-
-.date-header {
-    font-size: 1.3em;
-    color: var(--primary);
-    border-bottom: 2px solid var(--primary);
-    padding-bottom: 8px;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.date-header .day-count {
-    font-size: 0.7em;
-    color: var(--text-secondary);
-    font-weight: 400;
-    margin-left: 8px;
-}
-
 /* Paper card */
 .paper-card {
     background: var(--card-bg);
@@ -330,6 +309,74 @@ footer a {
     gap: 30px;
 }
 
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin: 32px 0 16px;
+    flex-wrap: wrap;
+}
+
+.pagination a, .pagination span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: var(--primary);
+    background: white;
+    transition: all 0.2s;
+}
+
+.pagination a:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.pagination span.current {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    font-weight: 700;
+}
+
+.pagination span.ellipsis {
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    min-width: 24px;
+}
+
+.pagination .page-info {
+    border: none;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 0.85em;
+    min-width: auto;
+}
+
+/* Date separator between pages */
+.page-date-sep {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-align: center;
+    margin: 20px 0 8px;
+    padding: 6px 0;
+    border-top: 1px dashed var(--border);
+}
+
+.page-date-sep strong {
+    color: var(--primary);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .two-col {
@@ -380,8 +427,8 @@ footer a {
     </header>
     <nav>
         <div class="container">
-            <a href="index.html" class="active">Latest</a>
-            <a href="archive/2026-05-12.html" class="">2026-05-12</a><a href="archive/2026-05-02.html" class="">2026-05-02</a><a href="archive/2026-04-30.html" class="">2026-04-30</a><a href="archive/2026-04-24.html" class="">2026-04-24</a><a href="archive/2026-04-22.html" class="">2026-04-22</a><a href="archive/2026-04-21.html" class="">2026-04-21</a><a href="archive/2026-04-13.html" class="">2026-04-13</a>
+            <a href="index.html" class="active">All Papers</a>
+            <a href="archive/2026-05-12.html">2026-05-12</a><a href="archive/2026-05-02.html">2026-05-02</a><a href="archive/2026-04-30.html">2026-04-30</a><a href="archive/2026-04-24.html">2026-04-24</a><a href="archive/2026-04-22.html">2026-04-22</a><a href="archive/2026-04-21.html">2026-04-21</a><a href="archive/2026-04-13.html">2026-04-13</a>
         </div>
     </nav>
     <div class="stats-bar">
@@ -392,18 +439,12 @@ footer a {
             <div class="stat">
                 <span class="stat-num">18</span> days archived
             </div>
-            <div class="stat">
-                <span class="stat-num">1</span> today
-            </div>
         </div>
     </div>
     <main>
         <div class="container two-col">
             <div>
                 
-        <div class="date-section">
-            <h2 class="date-header">2026-05-12 <span class="day-count">(1 papers)</span></h2>
-            
     <div class="paper-card">
         <span class="score-badge high">Score: 7.0</span>
         <div class="paper-title">
@@ -421,8 +462,167 @@ footer a {
         </div>
     </div>
     
+    <div class="paper-card">
+        <span class="score-badge ">Score: 4.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2605.01306" target="_blank">Machine Learning Enhanced Laser Spectroscopy for Multi-Species Gas Detection in Complex and Harsh Environments</a>
         </div>
-        
+        <div class="paper-meta">
+            <span>👤 Mohamed Sy</span>
+            <span>📅 2026-05-02</span>
+        </div>
+        <div class="paper-abstract collapsed">Laser absorption spectroscopy (LAS) is a well-established technique for non-intrusive measurement of gas species in combustion and atmospheric environments, but conventional methods struggle with multi-species mixtures under dynamic or interference-laden conditions. Overlapping spectral features, noise, and incomplete reference data limit reliability when unknown or weakly absorbing species are present. This dissertation develops diagnostics combining LAS with machine learning (ML) to address these limitations. Deep denoising autoencoders (DDAEs) are applied to shock-tube measurements during high-speed hydrocarbon pyrolysis, improving signal fidelity and detection limits for trace species. A structured unsupervised framework, HT-SIMNet, then mitigates interference from unknown species without full calibration data, using spectral augmentation and a Noise2Noise-inspired scheme to isolate species in reactive systems. Where reference spectra are unavailable, UnblindMix, an autoencoder-based blind source separation method, reconstructs concentrations and spectral signatures directly from mixture data, validated on mixtures of up to eight components. To recover weakly absorbing species masked by broader absorbers, a feature-engineering method based on first derivatives and convolutions selectively highlights minor species. Finally, VOC-certifire combines randomized smoothing with Voigt-based spectral perturbation to provide certifiable classification of volatile organic compounds under varying conditions. All techniques are experimentally validated and benchmarked. The integration of spectroscopic hardware with ML offers a path toward real-time, interference-resilient, reference-free gas detection for combustion science, environmental monitoring, and industrial safety.</div>
+        <div class="paper-tags"><span class="tag">physics.optics</span><span class="tag">cs.LG</span><span class="tag">physics.app-ph</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2605.01306" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2605.01306v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge ">Score: 4.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.28007" target="_blank">Multisensory learning recruits visual neurons into an olfactory memory engram</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Zeynep Okray, Nils Otto, Anna A. Cook, Clifford Talbot, Ashwin Miriyala, Martín Klappenbach, Ciara Stern, Kieran Desmond...</span>
+            <span>📅 2026-04-30</span>
+        </div>
+        <div class="paper-abstract collapsed">Associating multiple sensory cues with a single experience or object is a fundamental process that improves object recognition and memory performance. However, neural mechanisms that bind sensory features during learning and augment memory expression are unknown. Here we demonstrate multisensory appetitive and aversive memory in Drosophila. Combining colours and odours improved memory performance, even when each sensory modality was tested alone. Temporal control of neuronal function revealed visually-selective mushroom body Kenyon Cells (KCs) to be required for enhancement of visual and olfactory memory recall after multisensory training. Synapse-level connectomics suggests that valence-relevant dopaminergic reinforcement could permit the KC-spanning serotonergic DPM neurons to bridge between previously modality-selective KC streams. Consistent with this model, DPM transmission is uniquely required during multisensory memory formation and for enhanced expression of olfactory memory afterwards. In addition, signalling via the DopR1 dopamine receptor is required in APL neurons, suggesting that reinforcing dopamine could locally release GABA-ergic inhibition to permit bridging microcircuits to function. Cross-modal binding thereby expands the KCs representing the olfactory memory engram into those representing the colour. We propose that broadening of the engram improves memory performance after multisensory learning and permits a single sensory feature to retrieve the memory of the multimodal experience.</div>
+        <div class="paper-tags"><span class="tag">q-bio.NC</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.28007" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.28007v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 5.0</span>
+        <div class="paper-title">
+            <a href="https://doi.org/10.1111/jfpe.70504" target="_blank">Overview
+ of Electronic Olfactory Systems for Volatile Compound Measurements During Food Processing: Principles, Methods, Systems, and Applications</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Hao Lin, Meng Ji, Bao-chen Huang, Bridget Ama Kwadzokpui, Selorm Yao-Say Solomon Adade, Quansheng Chen</span>
+            <span>📅 2026-04-24</span>
+        </div>
+        <div class="paper-abstract collapsed">
+ Volatile compounds generated during food processing are closely associated with product quality, and their real‐time monitoring provides an effective approach for dynamically tracking quality changes and ensuring product consistency. This review aims to summarize the formation mechanisms of volatile compounds during food processing and to examine current principles, methods, and application progress in real‐time monitoring, with particular emphasis on biological olfaction and biomimetic sensing technologies. The available studies indicate that food flavor is shaped by complex processes such as water migration, browning, oxidation, and sugar metabolism, and that the resulting volatile compounds play a decisive role in the sensory properties of final products. Because different volatile compounds exhibit distinct chemical characteristics, effective monitoring depends on sensor systems with appropriate sensitivity and selectivity, as well as on the integration of real‐time detection with automation for process regulation and quality control. Although challenges remain in sensor performance, selectivity, and system integration, real‐time volatile monitoring shows considerable promise for food processing applications. Overall, advances in ultra‐fast and highly selective sensors, customizable hardware architectures, and data‐driven intelligent platforms with integrated multi‐sensor systems are expected to further promote the development and practical implementation of e‐nose technologies.</div>
+        <div class="paper-tags"><span class="tag">Journal of food process engineering</span></div>
+        <div class="paper-links">
+            <a href="https://doi.org/10.1111/jfpe.70504" target="_blank">📄 Abstract</a>
+            <a href="https://doi.org/10.1111/jfpe.70504" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge ">Score: 4.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.20197" target="_blank">How is a gas sensor poisoned by volatile methylsiloxanes?</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Heng Liu, Bingxin Yang, Yiming Lu, Yuan Wang, Xue Jia, Long Luo, Hao Li</span>
+            <span>📅 2026-04-22</span>
+        </div>
+        <div class="paper-abstract collapsed">Volatile methyl siloxanes (VMSs), widely present in consumer and industrial products, have attracted increasing concerns due to their persistence, bioaccumulation behavior, and adverse health effects. Beyond their environmental implications, VMSs also pose operational challenges for sensing technologies because they readily decompose on sensing materials to form silicon-based compounds (e.g., silica and silane) that irreversibly impair sensing performance, a phenomenon commonly known as siloxane poisoning. Despite its prevalence, the mechanistic basis of this deactivation remains poorly understood. Herein, we present the first comprehensive theoretical study of siloxane-induced poisoning in catalytic gas sensors. Guided by our self-developed AI Agent, Digital Sensor Platform (DigSen), we first identify siloxane poisoning as a previously overlooked yet high-impact research direction. Using hexamethyldisiloxane (HMDS) as a model compound, we then conducted first-principles calculations to uncover decomposition pathways across noble metal surfaces. Strikingly, a descriptor-based microkinetic volcano model is developed to capture the trade-off between sensing activity and resistance to poisoning, enabling predictive identification of anti-poisoning candidates. These insights not only elucidate the origin of siloxane poisoning but also demonstrate how AI-driven discovery, mechanistic theory, and experiments can be integrated into a closed-loop framework for catalytic sensor design. More broadly, this AI-guided paradigm represents a generalizable strategy for materials digital discovery, offering a transferable methodology that extends well beyond siloxane systems to diverse classes of materials challenges.</div>
+        <div class="paper-tags"><span class="tag">physics.chem-ph</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.20197" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.20197v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 5.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.19626" target="_blank">Odour sensing in turbulent plumes with high-speed electronic nose and non-invasive ground truth</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Nik Dennler, Elle Stark, Saimon Collaku, Lars Larson, André van Schaik, Michael Schmuker, John Crimaldi, Andreas T. Günt...</span>
+            <span>📅 2026-04-21</span>
+        </div>
+        <div class="paper-abstract collapsed">Chemical sensing in real-world environments requires resolving rapidly fluctuating and spatially heterogeneous concentration fields. However, these dynamics are strongly distorted by widely used, low-cost metal-oxide (MOx) gas sensors, whose thermal and surface-kinetic response acts as a low-pass filter on the underlying concentration signal. Quantifying and compensating for these effects remains challenging, largely due to the lack of benchmark datasets that simultaneously capture the spatiotemporal structure of turbulent odour fields and the time-resolved response of point sensors. Here, we present a dataset combining planar laser-induced fluorescence (PLIF) measurements of an acetone tracer plume with synchronised recordings from a custom, kilohertz-rate microelectromechanical (MEMS) MOx electronic nose deployed in a laboratory wind tunnel. The PLIF system provides quantitative, two-dimensional concentration fields at high spatial and temporal resolution, while the co-located e-nose records film resistance, heater currents, and environmental parameters with aligned timestamps. The dataset enables quantitative assessment of sensor dynamics, development and benchmarking of reconstruction and deconvolution algorithms, and data-driven modelling of plume structure. All recordings, metadata, calibration files, and example analysis scripts are released in open, platform-independent formats. Together, these provide a valuable reference for researchers working in odour-guided robotics, environmental monitoring, computational fluid dynamics, and neuromorphic sensing, supporting the design and evaluation of high-speed odour-sensing systems.</div>
+        <div class="paper-tags"><span class="tag">eess.SP</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.19626" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.19626v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 8.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.13121" target="_blank">Olfactory pursuit: catching a moving odor source in complex flows</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Maurizio Carbone, Lorenzo Piro, Robin A. Heinonen, Luca Biferale, Massimo Cencini, Antonio Celani</span>
+            <span>📅 2026-04-13</span>
+        </div>
+        <div class="paper-abstract collapsed">Locating and intercepting a moving target from possibly delayed, intermittent sensory signals is a paradigmatic problem in decision-making under uncertainty, and a fundamental challenge for, e.g., animals seeking prey or mates and autonomous robotic systems. Odor signals are intermittent, strongly mixed by turbulent-like transport, and typically lag behind the true target position, thereby complicating localization. Here, we formulate olfactory pursuit as a partially observable Markov decision process in which an agent maintains a joint belief over the target's position and velocity. Using a discrete run-and-tumble model, we compute quasi-optimal policies by numerically solving the Bellman equation and benchmark them against well-established information-theoretic strategies such as Infotaxis. We show that purely exploratory policies are near-optimal when the target frequently reorients, but fail dramatically when the target exhibits persistent motion. We thus introduce a computationally efficient hybrid policy that combines the information-gain drive of Infotaxis with a "greedy" value function derived from an associated fully observable control problem. Our heuristic achieves near-optimal performance across all persistence times and substantially outperforms purely exploratory approaches. Moreover, our proposal demonstrates strong robustness even in more complex search scenarios, including continuous run-and-tumble prey motion with moderate persistence time, model mismatch, and more accurate plume dynamics representation. Our results identify predictive inference of target motion as the key ingredient for effective olfactory pursuit and provide a general framework for search in information-poor, dynamically evolving environments.</div>
+        <div class="paper-tags"><span class="tag">cs.RO</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.13121" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.13121v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 6.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.10452" target="_blank">NOSE: Neural Olfactory-Semantic Embedding with Tri-Modal Orthogonal Contrastive Learning</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Yanyi Su, Hongshuai Wang, Zhifeng Gao, Jun Cheng</span>
+            <span>📅 2026-04-12</span>
+        </div>
+        <div class="paper-abstract collapsed">Olfaction lies at the intersection of chemical structure, neural encoding, and linguistic perception, yet existing representation methods fail to fully capture this pathway. Current approaches typically model only isolated segments of the olfactory pathway, overlooking the complete chain from molecule to receptors to linguistic descriptions. Such fragmentation yields learned embeddings that lack both biological grounding and semantic interpretability. We propose NOSE (Neural Olfactory-Semantic Embedding), a representation learning framework that aligns three modalities along the olfactory pathway: molecular structure, receptor sequence, and natural language description. Rather than simply fusing these signals, we decouple their contributions via orthogonal constraints, preserving the unique encoded information of each modality. To address the sparsity of olfactory language, we introduce a weak positive sample strategy to calibrate semantic similarity, preventing erroneous repulsion of similar odors in the feature space. Extensive experiments demonstrate that NOSE achieves state-of-the-art (SOTA) performance and excellent zero-shot generalization, confirming the strong alignment between its representation space and human olfactory intuition.Code and data are available at https://github.com/Xianyusyy/NOSE</div>
+        <div class="paper-tags"><span class="tag">cs.CL</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.10452" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.10452v2" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 7.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.07699" target="_blank">Smells Like Fire: Exploring the Impact of Olfactory Cues in VR Wildfire Evacuation Training</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Alison Crosby, MJ Johns, Eunsol Sol Choi, Tejas Polu, Katherine Isbister, Sri Kurniawan</span>
+            <span>📅 2026-04-09</span>
+        </div>
+        <div class="paper-abstract collapsed">This paper presents a pilot study exploring the effects of an olfactory stimulus (smoke) for a Virtual Reality game designed to support wildfire evacuation preparedness. Participants (N=18) were split evenly into either a smoke or a control condition, and both completed the same evacuation task. Post-task surveys assessed the participants' perceived preparedness and overall experience. Initial findings suggest participants in the smoke condition reported significantly higher immersion compared to those in the control condition. Across both groups, participants expressed an increased sense of preparedness for real-world wildfire evacuations following the experience.</div>
+        <div class="paper-tags"><span class="tag">cs.HC</span><span class="tag">cs.ET</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.07699" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.07699v1" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+    <div class="paper-card">
+        <span class="score-badge high">Score: 8.0</span>
+        <div class="paper-title">
+            <a href="https://arxiv.org/abs/2604.01650" target="_blank">AromaGen: Interactive Generation of Rich Olfactory Experiences with Multimodal Language Models</a>
+        </div>
+        <div class="paper-meta">
+            <span>👤 Yunge Wen, Awu Chen, Jianing Yu, Jas Brooks, Hiroshi Ishii, Paul Pu Liang</span>
+            <span>📅 2026-04-02</span>
+        </div>
+        <div class="paper-abstract collapsed">Smell's deep connection with food, memory, and social experience has long motivated researchers to bring olfaction into interactive systems. Yet most olfactory interfaces remain limited to fixed scent cartridges and pre-defined generation patterns, and the scarcity of large-scale olfactory datasets has further constrained AI-based approaches. We present AromaGen, an AI-powered wearable interface capable of real-time, general-purpose aroma generation from free-form text or visual inputs. AromaGen is powered by a multimodal LLM that leverages latent olfactory knowledge to map semantic inputs to structured mixtures of 12 carefully selected base odorants, released through a neck-worn dispenser. Users can iteratively refine generated aromas through natural language feedback via in-context learning. Through a controlled user study ($N = 26$), AromaGen matches human-composed mixtures in zero-shot generation and significantly surpasses them after iterative refinement, achieving a median similarity of 8/10 to real food aromas and reducing perceived artificiality to levels comparable to real food. AromaGen is a step towards real-world interactive aroma generation, opening new possibilities for communication, wellbeing, and immersive technologies.</div>
+        <div class="paper-tags"><span class="tag">cs.HC</span><span class="tag">cs.AI</span></div>
+        <div class="paper-links">
+            <a href="https://arxiv.org/abs/2604.01650" target="_blank">📄 Abstract</a>
+            <a href="https://arxiv.org/pdf/2604.01650v2" target="_blank">📥 PDF</a>
+        </div>
+    </div>
+    
+                <div class="pagination">
+<span class="current">1</span>
+<a href="page/2.html">2</a>
+<a href="page/2.html">Next &raquo;</a>
+<span class="page-info">Page 1/2</span>
+</div>
             </div>
             <aside class="sidebar">
                 <h3>📅 Archive</h3>
@@ -435,7 +635,7 @@ footer a {
     <footer>
         <div class="container">
             <p>Gas Sensor & Bionic Olfaction Research Tracker</p>
-            <p>Last updated: 2026-05-14 19:24</p>
+            <p>Last updated: 2026-05-14 19:30</p>
         </div>
     </footer>
 </body>
